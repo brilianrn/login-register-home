@@ -9,6 +9,9 @@ export function setUserLogin(payload) {
 export function setCustomers(payload) {
   return { type: reducerTypeUser.customers, payload };
 }
+export function setUserDetail(payload) {
+  return { type: reducerTypeUser.userDetail, payload };
+}
 
 export function setUserLoginAsync({ email, password, navigate }) {
   return ((dispatch) => {
@@ -103,7 +106,6 @@ export function customerList() {
     })
       .then(({ data }) => {
         dispatch(setCustomers(data));
-        console.log(data)
       })
       .catch(_ => {
         swal({
@@ -114,4 +116,48 @@ export function customerList() {
         });
       })
   })
+}
+
+export function setUserDetailAsync({ id }) {
+  return ((dispatch) => {
+    axios({
+      url: `/user/detail/${id}`,
+      method: "GET"
+    })
+      .then(({ data }) => {
+        dispatch(setUserDetail(data));
+      })
+      .catch(_ => {
+        swal({
+          title: "Peringatan!",
+          text: "Internal server error",
+          icon: "error",
+          button: "Oke"
+        });
+      })
+  })
+}
+
+export function approveCustomerAsync({ id }) {
+  axios({
+    url: `/user/admin/approve-customer`,
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    data: {
+      id
+    }
+  })
+    .then(({ data }) => {
+      console.log(data)
+    })
+    .catch(_ => {
+      swal({
+        title: "Peringatan!",
+        text: "Internal server error",
+        icon: "error",
+        button: "Oke"
+      });
+    })
 }

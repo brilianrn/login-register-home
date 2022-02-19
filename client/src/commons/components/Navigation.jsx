@@ -25,11 +25,11 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" aria-controls="navbarScroll">
             <Nav>
-              <Nav.Link href="#home" className="items text text-white">
+              <Nav.Link href="#" className="items text text-white">
                 <Link to="/" className="text-decoration-none text-white">Home</Link>
               </Nav.Link>
-              <Nav.Link href="#portfolio" className="items text text-white">
-                <Link to="/profile/12" className="text-decoration-none text-white">Profile</Link>
+              <Nav.Link href="#" className="items text text-white">
+                <Link to={`/profile/${userLogin.id}`} className="text-decoration-none text-white">Profile</Link>
               </Nav.Link>
               {userLogin?.role === "admin" ?
                 <Nav.Link href="#portfolio" className="items text text-white">

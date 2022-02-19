@@ -75,10 +75,7 @@ export default function Main() {
         </Link>
       </form>
       <div class="text-center fs-6">
-        Don't have account ?
-        <Link to="/register">
-          <a href="#"> Sign up</a>
-        </Link> or <br />
+        or
         <Link to="/login">
           <a href="#"> Sign In Customer</a>
         </Link>

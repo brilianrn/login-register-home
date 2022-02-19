@@ -1,6 +1,6 @@
 const reducerTypeUser = {
   customers: "customers/setCustomer",
-  customerDetail: "customerDetail/setCustomerDetail",
+  userDetail: "customerDetail/setCustomerDetail",
   userLogin: "userLogin/setUserLogin",
 }
 

@@ -2,7 +2,7 @@ import { reducerTypeUser } from "../../commons/constantas";
 
 const initialState = {
   customers: [],
-  customerDetail: {},
+  userDetail: {},
   userLogin: {}
 }
 
@@ -11,8 +11,8 @@ function userReducer(state = initialState, actions) {
 
   if (type === reducerTypeUser.customers) {
     return { ...state, customers: payload };
-  } else if (type === reducerTypeUser.customerDetail) {
-    return { ...state, customerDetail: payload };
+  } else if (type === reducerTypeUser.userDetail) {
+    return { ...state, userDetail: payload };
   } else if (type === reducerTypeUser.userLogin) {
     return { ...state, userLogin: payload };
   }

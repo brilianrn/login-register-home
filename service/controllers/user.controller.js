@@ -18,7 +18,6 @@ class UserController {
       role: "customer",
     }
 
-    console.log(customer)
     User.create(customer)
       .then(data => {
         res.status(201).json({ message: `${data.email} successfully created` })
@@ -118,6 +117,41 @@ class UserController {
         res.status(200).json(data);
       })
       .catch(err => {
+        res.status(500).json(err.message);
+      })
+  }
+
+  static userDetail(req, res) {
+    const { id } = req.params;
+
+    User.findOne({
+      where: {
+        id
+      }
+    })
+      .then(data => {
+        res.status(200).json(data);
+      })
+      .catch(err => {
+        res.status(500).json(err.message);
+      })
+  }
+
+  static approveCustomer(req, res) {
+    const { id } = req.body;
+
+    User.update({
+      approval: true
+    }, {
+      where: {
+        id
+      }
+    })
+      .then(data => {
+        res.status(200).json(data);
+      })
+      .catch(err => {
+        console.log(err.message)
         res.status(500).json(err.message);
       })
   }
